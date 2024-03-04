@@ -3,10 +3,10 @@ const { Tag, Product, ProductTag } = require('../../models');
 
 router.get('/', async(req, res) => {
   try {
-    const tagData = await Tag.findAll({
+    const tagsData = await Tag.findAll({
       include: [{ model: Product }]
   });
-    res.status(200).json(tagData);
+    res.status(200).json(tagsData);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -14,10 +14,10 @@ router.get('/', async(req, res) => {
 
 router.get('/:id', async(req, res) => {
   try {
-    const tagData = await Tag.findByPk(req.params.id, {
+    const tagsData = await Tag.findByPk(req.params.id, {
       include: [{ model: Product }]
     });
-    res.status(200).json(tagData);
+    res.status(200).json(tagsData);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -25,8 +25,8 @@ router.get('/:id', async(req, res) => {
 
 router.post('/', async(req, res) => {
   try {
-    const tagData = await Tag.create(req.body)
-    res.status(200).json(tagData);
+    const tagsData = await Tag.create(req.body)
+    res.status(200).json(tagsData);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -34,11 +34,11 @@ router.post('/', async(req, res) => {
 
 router.put('/:id', async(req, res) => {
   try {
-    const tagData = await Tag.update(req.body, {
+    const tagsData = await Tag.update(req.body, {
       where: {
         id: req.params.id
       }})
-      res.status(200).json(tagData);
+      res.status(200).json(tagsData);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -46,15 +46,15 @@ router.put('/:id', async(req, res) => {
 
 router.delete('/:id', async(req, res) => {
   try {
-    const tagData = await Tag.destroy({
+    const tagsData = await Tag.destroy({
       where: {
         id: req.params.id
       }})
-      const productTagData = await ProductTag.destroy({
+      const productTagsData = await ProductTag.destroy({
         where: {
           tag_id: req.params.id
         }})
-      res.status(200).json(tagData);
+      res.status(200).json(tagsData);
   } catch (err) {
     res.status(500).json(err);
   }
