@@ -12,8 +12,8 @@ router.get('/', async(req, res) => {
       include: [{ model: Category }, {model: Tag}]
     });
     res.status(200).json(productsData);
-  } catch (err) {
-    res.status(500).json(err);
+  } catch (error) {
+    res.status(500).json(error);
   }
 });
 
@@ -26,8 +26,8 @@ router.get('/:id', async(req, res) => {
       include: [{ model: Category }, {model: Tag}]
     });
     res.status(200).json(productsData);
-  } catch (err) {
-    res.status(500).json(err);
+  } catch (error) {
+    res.status(500).json(error);
   }
 });
 
@@ -120,8 +120,8 @@ router.delete('/:id', async(req, res) => {
         product_id: req.params.id
     }})
     res.status(200).json(productsData);
-  } catch (err) {
-    res.status(500).json(err);
+  } catch (error) {
+    res.status(500).json(error);
   }
 });
 
